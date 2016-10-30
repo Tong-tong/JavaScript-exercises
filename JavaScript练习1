@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript5.1</title>
+</head>
+<body>
+   <p>请输入学生成绩：</p>
+<input type="text" id="i"/>
+<input type="button" value="提交" onclick="hello()"/>
+<br/>
+<br/>
+<span>该生为：</span>
+<span id="stu"></span>
+
+</body>
+<script type="text/JavaScript">
+		 function hello(){
+     	var i =document.getElementById("i").value; 
+     	// 判断是否为空，为空弹框提示，并清除提示
+     	if (!i.trim()) {
+     		 alert("输入不为空，请重新输入1-100的分数"); 
+     		 document.getElementById("stu").innerText=''; 
+     		 return; 
+     		} 
+     	// 判断输入是否合法，输入不为数字时提示输入不合法，并清除提示
+     	if (isNaN(i))
+     	   { 
+     	   	alert("输入不合法，请重新输入1-100的分数"); 
+     	   	document.getElementById("stu").innerText=''; 
+     	   	return; 
+     	   }
+
+       if(i>=90 && i<=100){
+       	document.getElementById("stu").innerText="1等生";
+       }else if(i>=80 && i<90){
+       	document.getElementById("stu").innerText="2等生";
+       }else if(i>=70 && i<80){
+       	document.getElementById("stu").innerText="3等生";
+       }else if(i>=60 && i<70){
+       		document.getElementById("stu").innerText="4等生";
+       }else if(i>=50 && i<60){
+       	document.getElementById("stu").innerText="5等生";
+       }else if (i>=40 && i<50){
+       		document.getElementById("stu").innerText="6等生";
+       }else if(i>=30 && i<40){
+       		document.getElementById("stu").innerText="7等生";
+       }else if (i>=20 && i<30){
+       		document.getElementById("stu").innerText="8等生";
+       }else if (i>=10 && i<20){
+       		document.getElementById("stu").innerText="9等生";
+       }else if (i>=0 && i<10){
+       		document.getElementById("stu").innerText="10等生";
+       } else {
+       	      // 判断输入是否为0-100之间的数，不是提示警告
+       		document.getElementById("stu").innerText="请输入0-100的分数";
+       }      
+     }
+
+	</script>
+</html>
