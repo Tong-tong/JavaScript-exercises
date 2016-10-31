@@ -6,14 +6,13 @@
 </head>
 <body>
    <p>请输入学生成绩：</p>
-<input type="text" id="i"/>
+<input type="number" id="i"/>
 <input type="button" value="提交" onclick="hello()"/>
 <br/>
 <br/>
 <span>该生为：</span>
 <span id="stu"></span>
 
-</body>
 <script type="text/JavaScript">
 		 function hello(){
      	var i =document.getElementById("i").value; 
@@ -56,6 +55,6 @@
        		document.getElementById("stu").innerText="请输入0-100的分数";
        }      
      }
-
 	</script>
+	</body>
 </html>
