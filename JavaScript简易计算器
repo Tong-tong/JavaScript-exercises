@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+
+<body>
+    num1:
+    <!-- type="number"时，如果输入1.1.1会提示输入不为空，因为1.1.1已经不是数字了，所以还是建议使用type="text" -->
+    <input type="text" id="num1" />
+    <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    num2:
+    <input type="text" id="num2" /> =
+    <span id="result"></span>
+    <button onclick="calc()">计算</button>
+    <script type="text/JavaScript" src="calculator.js"></script>
+</body>
+
+</html>
+*****************************JavaScript**********************************
+ function calc(){
+	var num1 = document.getElementById("num1").value;//输入框的值
+	var num2 = document.getElementById("num2").value;
+    if(!num1.trim()||!num2.trim()){
+    	alert("输入不为空，请输入要计算的数值！");
+    	document.getElementById("result").innerText="";
+    	return;
+    }
+
+if (isNaN(num1)||isNaN(num2))
+ 	   { 
+ 	   	alert("输入不合法，请重新输入1-100的分数"); 
+ 	   	document.getElementById("result").innerText=''; 
+ 	   	return; 
+ 	   }
+		var num1 = parseFloat(document.getElementById("num1").value);
+		var num2 = parseFloat(document.getElementById("num2").value);
+		var op = document.getElementById("op").value;
+		var res =jisuan(num1,num2,op);
+		document.getElementById("result").innerText = res;
+		// alert(res);			
+}
+
+/**
+ * [jisuan description]
+ * @param  {[type]} n1  [第一个输入框的内容]
+ * @param  {[type]} n2  [第二个输入框的内容]
+ * @param  {[type]} opr [操作符]
+ * @return {[type]}     [description]
+ */
+function jisuan(n1,n2,opr){
+	switch (opr){
+		case '+' : return parseFloat((n1+n2).toFixed(5));
+		case '-' : return parseFloat((n1-n2).toFixed(5));
+		case '*' : return parseFloat((n1*n2).toFixed(5));
+		case '/' : if(n2!=0){
+			return parseFloat((n1/n2).toFixed(5));   
+		}
+		else{
+			return "NAN,除数不为0";
+		}       		
+    default: return '出错';
+	}
+}
