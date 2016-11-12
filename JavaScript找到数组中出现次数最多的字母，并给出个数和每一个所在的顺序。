@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js计数</title>
+</head>
+
+<body>
+    <input type="text" id="text" />
+    <button type="submit" onclick="abc()">提交</button>
+    <br/> (请输入字母，以逗号分隔)
+    <script type="text/JavaScript" src="index.js"></script>
+</body>
+
+</html>
+******************************JavaScript******************************
+ function abc(){
+		var text = document.getElementById("text").value;
+		if (!text.trim()) {
+			alert("输入不为空，请重新输入"); 
+			 return;
+		}
+		 var count = {};//记录字母出现次数
+		 var position = {};//记录字母出现位置
+		 var arr =document.getElementById("text").value.split(","); //取文本框的值存入数组
+		//遍历数组
+		 arr.forEach(function(item,index){
+		if (count[item]) {
+			count[item] ++;//字母出现一次计数+1
+			position[item]+=","+index;//保存该字母在数组中的位置，并以","分隔
+		}
+		else{
+			count[item]=1;//否则字母出现次数为1
+			position[item]=""+index;//记录位置
+		}
+		});
+		console.log(count);
+		console.log(position);
+
+        var max = 0;
+        var more=[];//将保存新数组
+        //遍历新数组
+        for(var i in count){
+        	if (count[i]>=max) {
+        		max=count[i];
+        		more.push(i);//添加数值
+        		//console.log(more);
+        	}
+        } 
+        document.write("出现最多的字母是："+more+"<br />");
+
+        for(var i=0;i<more.length;i++){
+	       key = more[i];
+	       document.write(key+"出现次数最多："+count[key]+"次"+"<br />");
+		   document.write(key+"所在位置："+position[key]+"<br />");
+         }		
+}
